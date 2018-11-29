@@ -1,42 +1,11 @@
-public static void FileNames(int[] arrayOfNames,String sourceDirectory) throws Exception
+public static void allFiles() throws Exception
 	{
-	int i,j;
-	List<String> results = new ArrayList<String>();
-
-
-	File[] files = new File(sourceDirectory).listFiles();
-	//If this pathname does not denote a directory, then listFiles() returns null. 
-
-	for (File file : files) {
-	    if (file.isFile()) {
-	        results.add(file.getName());
-	    }
-	}
-	
-	
-	
-	
-	
-	for(i =0;i<arrayOfNames.length;i++)
-	{
-		for(j=0;j<results.size();j++)
-		{
-			if((arrayOfNames[i]==(Integer.parseInt(results.get(j).substring(0, 3))))&&(((results.get(j).substring(4, 5)).equalsIgnoreCase("s"))))
-			{
-				ResultSet srcResultSet = original.sqlSourceQuery((results.get(j)),sourceDirectory,sourceConnection);
-			}
-			if((arrayOfNames[i]==(Integer.parseInt(results.get(j).substring(0, 3))))&&(((results.get(j).substring(4, 5)).equalsIgnoreCase("t"))))
-			{
-				ResultSet trgResultSet=original.sqlTargetQuery((results.get(j)),sourceDirectory,targetConnection);
-				
-			}
-			
-			//Comparator Method:
-			
-			
-		}
-		System.out.println("Before Comaprison of Source and taget");
-		comp.compare(srcResultSet,trgResultSet);
-		
-	}
+	String sourceDirectory;
+	Scanner scan = new Scanner(System.in);
+	System.out.println("Enter Source Directory path :");
+	sourceDirectory = scan.nextLine();
+	File directory=new File(sourceDirectory);
+    int fileCount=directory.list().length;
+		int countNumberOfFiles[] = new int[fileCount];
+		path.FileNames(countNumberOfFiles, sourceDirectory);
 	}
